@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { FcGoogle } from "react-icons/fc";
 import { SiGooglemaps } from "react-icons/si";
 import { useGSAP } from "@/lib/gsap";
 import { revealWithin } from "@/lib/animations";
@@ -15,24 +16,37 @@ export default function Accolades() {
     <section className="accolades" id="accolades" ref={scope}>
       <div className="container">
         <div className="section-head reveal">
-          <span className="eyebrow">Guest Reviews</span>
-          <h2 className="section-title">What Guests Say</h2>
+          <span className="eyebrow">Google Reviews</span>
+          <h2 className="section-title">Words from Our Guests</h2>
           <div className="gold-rule" />
-          <p>Experiences shared by families who celebrated with us.</p>
+          <p>Real experiences shared by families who celebrated with us.</p>
         </div>
 
         <div className="quote-grid">
           {testimonials.map((item) => (
             <figure className="quote-card" key={item.name}>
+              <figcaption className="review-topline">
+                <div className="review-profile">
+                  <span className="review-avatar" aria-hidden="true">
+                    {item.name
+                      .split(" ")
+                      .map((part) => part[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </span>
+                  <div className="quote-author">
+                    <strong>{item.name}</strong>
+                    <span>Guest review</span>
+                  </div>
+                </div>
+                <FcGoogle className="review-google-icon" aria-hidden="true" />
+              </figcaption>
               {item.rating && (
-                <div className="stars" aria-label={`${item.rating} out of 5 stars`}>
+                <div className="stars" role="img" aria-label={`${item.rating} out of 5 stars`}>
                   {"★".repeat(item.rating)}
                 </div>
               )}
               <blockquote>“{item.quote}”</blockquote>
-              <figcaption className="quote-author">
-                <strong>{item.name}</strong>
-              </figcaption>
             </figure>
           ))}
         </div>

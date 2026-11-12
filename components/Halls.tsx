@@ -9,9 +9,7 @@ export default function Halls() {
           <div className="halls-intro">
             <span className="eyebrow">Architectural Grandeur</span>
             <h2>Tailored Banquet Spaces</h2>
-            <p>
-              Three distinct venues designed for royal processions, celebratory soirées and intimate gatherings.
-            </p>
+           
           </div>
 
           {halls.map((hall) => (

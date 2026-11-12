@@ -18,7 +18,6 @@ export default function Gallery() {
           <span className="eyebrow">Visual Splendour</span>
           <h2 className="section-title">Moments Inside Imperial Park</h2>
           <div className="gold-rule" />
-          <p>Floral mandaps, crystal evenings and bespoke tablescapes, captured in our Sahibabad estate.</p>
         </div>
 
         <div className="gallery-grid">

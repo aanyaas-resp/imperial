@@ -4,7 +4,7 @@ import { FormEvent, useRef } from "react";
 import { FaInstagram, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { useGSAP } from "@/lib/gsap";
 import { revealWithin } from "@/lib/animations";
-import { contact, createWhatsAppLink } from "@/lib/content";
+import { contact, createWhatsAppLink, halls } from "@/lib/content";
 
 export default function Inquiry() {
   const scope = useRef<HTMLElement>(null);
@@ -19,11 +19,9 @@ export default function Inquiry() {
       "",
       `Name: ${formData.get("name")}`,
       `Phone: ${formData.get("phone")}`,
-      `Celebration: ${formData.get("occasion")}`,
-      `Preferred date: ${formData.get("date")}`,
-      `Estimated guests: ${formData.get("guests")}`,
-      `Preferred space: ${formData.get("hall") || "Not specified"}`,
-      `Special requests: ${formData.get("notes") || "None"}`,
+      `Hall: ${formData.get("hall") || "Not selected"}`,
+      `Function: ${formData.get("function") || "Not selected"}`,
+      `Event details: ${formData.get("details") || "Not provided"}`,
     ].join("\n");
 
     window.location.assign(createWhatsAppLink(message));
@@ -76,68 +74,59 @@ export default function Inquiry() {
         <form className="form-card reveal" onSubmit={handleSubmit}>
           <span className="eyebrow">Online Reservation Desk</span>
           <h3>Plan Your Celebration</h3>
-          <p className="form-note">Submit your details and continue in WhatsApp to send your inquiry.</p>
+          <p className="form-note">Share your name and number, then choose a hall and function to help us plan.</p>
 
           <div className="form-grid">
             <div className="field">
-              <label htmlFor="name">Full Name *</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required />
+              <label htmlFor="name">Name *</label>
+              <input id="name" name="name" type="text" placeholder="Your name" autoComplete="name" required />
             </div>
 
             <div className="field">
               <label htmlFor="phone">Phone Number *</label>
-              <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" required />
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+91 98765 43210"
+                autoComplete="tel"
+                required
+              />
             </div>
 
             <div className="field">
-              <label htmlFor="occasion">Celebration Type *</label>
-              <select id="occasion" name="occasion" defaultValue="" required>
-                <option value="" disabled>
-                  Select occasion
-                </option>
-                <option value="Wedding">Wedding &amp; Reception</option>
-                <option value="Sangeet">Sangeet / Mehendi</option>
-                <option value="Engagement">Ring Ceremony / Sagai</option>
-                <option value="Corporate">Corporate Gala</option>
-                <option value="Milestone">Milestone Celebration</option>
+              <label htmlFor="hall">Preferred Hall</label>
+              <select id="hall" name="hall" defaultValue="">
+                <option value="">Select a hall</option>
+                {halls.map((hall) => (
+                  <option key={hall.name} value={hall.name}>
+                    {hall.name}
+                  </option>
+                ))}
               </select>
             </div>
 
             <div className="field">
-              <label htmlFor="date">Preferred Date *</label>
-              <input id="date" name="date" type="date" required />
-            </div>
-
-            <div className="field">
-              <label htmlFor="guests">Estimated Guests *</label>
-              <select id="guests" name="guests" defaultValue="" required>
-                <option value="" disabled>
-                  Select count
-                </option>
-                <option value="100-300">100 – 300</option>
-                <option value="300-600">300 – 600</option>
-                <option value="600-1000">600 – 1,000</option>
-                <option value="1000+">1,000+</option>
-              </select>
-            </div>
-
-            <div className="field">
-              <label htmlFor="hall">Preferred Space</label>
-              <select id="hall" name="hall" defaultValue="Darbar">
-                <option value="Darbar">Darbar Ballroom (500–1,200)</option>
-                <option value="Monarch">Monarch (100–350)</option>
-                <option value="Lounge">Grand Lounge (200–500)</option>
-                <option value="Multiple">Multiple Spaces / Entire Estate</option>
+              <label htmlFor="function">Function</label>
+              <select id="function" name="function" defaultValue="">
+                <option value="">Select a function</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Reception">Reception</option>
+                <option value="Engagement / Roka">Engagement / Roka</option>
+                <option value="Sangeet">Sangeet</option>
+                <option value="Birthday / Anniversary">Birthday / Anniversary</option>
+                <option value="Corporate Event">Corporate Event</option>
+                <option value="Other">Other</option>
               </select>
             </div>
 
             <div className="field full">
-              <label htmlFor="notes">Special Requests</label>
+              <label htmlFor="details">Event details (optional)</label>
               <textarea
-                id="notes"
-                name="notes"
-                rows={4}
-                placeholder="Catering, themes or special ceremony timings"
+                id="details"
+                name="details"
+                rows={3}
+                placeholder="Event type, date or guest count"
               />
             </div>
           </div>

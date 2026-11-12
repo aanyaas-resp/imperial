@@ -49,9 +49,9 @@ export const halls = [
 
 export const galleryImages = [
   { src: "/images/floral.webp", caption: "Floral Mandap", label: "Sacred Vows" },
-  { src: "/images/ballroom-carpet.webp", caption: "Grand Ballroom Stage", label: "Celebrations" },
+  { src: "/images/darbar.webp", caption: "Grand Ballroom", label: "Celebrations" },
   { src: "/images/fine-banqueting.webp", caption: "Fine Banqueting", label: "Tablescapes" },
-  { src: "/images/chandelier-corridor.webp", caption: "Crystal Corridor", label: "Illumination" },
+  { src: "/images/monarch.webp", caption: "Crystal-lit Banquet", label: "Illumination" },
 ];
 
 export const testimonials = [

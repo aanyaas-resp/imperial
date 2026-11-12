@@ -7,7 +7,7 @@ import { revealWithin } from "@/lib/animations";
 
 export default function About() {
   const scope = useRef<HTMLElement>(null);
-   
+
   useGSAP(
     () => {
       // Text blocks fade up as they enter the viewport.
@@ -34,29 +34,21 @@ export default function About() {
       <div className="container about-grid">
         <div className="about-copy">
           <span className="eyebrow reveal">About Imperial Park</span>
-          <h2 className="reveal">A Destination for Every Celebration</h2>
-
+          <h2 className="reveal">
+            Destination for Every Celebration
+          </h2>
+          <span className="about-rule reveal" aria-hidden="true" />
           <blockquote className="about-quote reveal">
-            From grand wedding receptions to intimate family gatherings, Hotel Imperial Park brings together
-            palatial scale, European grandeur and authentic hospitality.
+            A grand setting, made personal.
           </blockquote>
-
-          <p className="reveal">
-            Positioned in the celebration corridor of Sahibabad, Ghaziabad, Imperial Park offers a sanctuary of
-            refined grandeur. Handcrafted moldings, dramatic crystal installations and expansive banqueting halls
-            form the ideal backdrop for life&apos;s most cherished moments.
+          <p className="about-description reveal">
+            In Sahibabad, Ghaziabad, Hotel Imperial Park brings together graceful architecture, crystal-lit
+            spaces and warm, attentive hospitality.
           </p>
-
-          <div className="about-stats reveal">
-            <div>
-              <h3>Palatial Scale</h3>
-              <p>High vaulted ceilings with dramatic crystal installations.</p>
-            </div>
-            <div>
-              <h3>White-Glove Care</h3>
-              <p>A dedicated banquet team for every celebration, from the first call to the final farewell.</p>
-            </div>
-          </div>
+          <p className="about-description reveal">
+            From a spectacular wedding reception to an intimate family gathering, our distinctive banquet
+            halls make every occasion feel beautifully your own.
+          </p>
         </div>
 
         <div className="about-media reveal">
@@ -66,8 +58,8 @@ export default function About() {
           <span className="corner br" />
           <div className="frame">
             <Image
-              src="/images/about.webp"
-              alt="Imperial Park grand ballroom with crystal chandeliers and a decorated stage"
+              src="/images/about-lounge.webp"
+              alt="Imperial Park lounge with crystal chandeliers and plush seating"
               fill
               sizes="(max-width: 900px) 100vw, 50vw"
             />
